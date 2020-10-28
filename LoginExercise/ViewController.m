@@ -6,7 +6,7 @@
 //
 
 #import "ViewController.h"
-
+#import "LoggedViewController.h"
 @interface ViewController ()
 
 @end
@@ -46,7 +46,8 @@
         if([password isEqualToString:_passField.text]){
             //NSLog(@"Login Successful");
             UIStoryboard * mainStoryboard =[UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            ViewController * viewController= [mainStoryboard instantiateViewControllerWithIdentifier:@"LoginSuccess"];
+            LoggedViewController * viewController= [mainStoryboard instantiateViewControllerWithIdentifier:@"LoginSuccess"];
+            viewController.nombre=_userField.text;
             [self presentViewController:viewController animated:YES completion:nil];
         }else{
             UIAlertController * badPassword = [UIAlertController alertControllerWithTitle:@"ERROR" message:@"Contraseña incorrecta" preferredStyle:UIAlertControllerStyleActionSheet];
@@ -56,6 +57,5 @@
         }
     }
 }
-
 
 @end
