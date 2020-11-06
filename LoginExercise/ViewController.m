@@ -77,7 +77,9 @@
                         UIAlertController * badPassword = [UIAlertController alertControllerWithTitle:@"ERROR" message:@"Contraseña incorrecta" preferredStyle:UIAlertControllerStyleActionSheet];
                             UIAlertAction * ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                         [badPassword addAction:ok];
-                        [self presentViewController:badPassword animated:YES completion:nil];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self presentViewController:badPassword animated:YES completion:nil];
+                        });
                     }else{
                         NSLog(@"Unexpected result in login code");
                     }
